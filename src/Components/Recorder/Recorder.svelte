@@ -175,6 +175,7 @@
   .none {
     visibility: hidden;
   }
+  
 </style>
 
 <div class="player">

@@ -22,7 +22,7 @@
 </style>
 
 <main>
-  <header>Voice Notes By Svelte</header>
+  <header>Voice Notes</header>
   <div class="container">
     <div class="recording__box">
       <VoiceRecogination />

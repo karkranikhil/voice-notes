@@ -5,7 +5,7 @@
   let recordingText = `Press the Play button to Start recording.`;
   let noteContent = "";
   try {
-    var SpeechRecognition =
+    let SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
     var recognition = new SpeechRecognition();
   } catch (e) {
@@ -19,13 +19,10 @@
   /** Voice API Logic Start**/
   recognition.continuous = true;
   recognition.onresult = function(event) {
-    var current = event.resultIndex;
-    var transcript = event.results[current][0].transcript;
-    var mobileRepeatBug =
-      current == 1 && transcript == event.results[0][0].transcript;
-    if (!mobileRepeatBug) {
-      noteContent += transcript;
-    }
+    let current = event.resultIndex;
+    let transcript = event.results[current][0].transcript;
+    console.log(transcript);
+    noteContent += transcript;
   };
 
   recognition.onstart = function() {
@@ -43,7 +40,7 @@
   };
   /** Voice Listen Code **/
   function readOutLoud(message) {
-    var speech = new SpeechSynthesisUtterance();
+    let speech = new SpeechSynthesisUtterance();
     speech.text = message;
     speech.volume = 1;
     speech.rate = 1;
@@ -56,8 +53,8 @@
     localStorage.setItem("note-" + dateTime, content);
   }
   function getAllNotes() {
-    var notes = [];
-    var key;
+    let notes = [];
+    let key;
     for (var i = 0; i < localStorage.length; i++) {
       key = localStorage.key(i);
 
@@ -102,9 +99,9 @@
   function resetHandler() {
     noteContent = "";
     recordingText = "Note reset successfully.";
-    window.setTimeout(()=>{
-      recordingText= `Press the Play button to Start recording.`
-    }, 5000)
+    window.setTimeout(() => {
+      recordingText = `Press the Play button to Start recording.`;
+    }, 5000);
   }
   function saveHandler() {
     recognition.stop();
@@ -117,6 +114,9 @@
       noteContent = "";
       notes = getAllNotes();
       recordingText = "Note saved successfully.";
+      window.setTimeout(() => {
+        recordingText = `Press the Play button to Start recording.`;
+    }, 5000);
     }
   }
   function readOutLoudHandler(event) {
@@ -158,6 +158,9 @@
       -webkit-box-shadow ease-in-out 0.15s;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+  }
+  textarea:focus {
+    outline: none;
   }
   .input-single {
     position: relative;

@@ -173,7 +173,7 @@
     -webkit-transition: background-color 0.3s ease;
   }
   .none {
-    display: none;
+    visibility: hidden;
   }
 </style>
 

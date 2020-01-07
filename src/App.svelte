@@ -24,7 +24,6 @@
 <main>
   <header>Voice Notes By Svelte</header>
   <div class="container">
-    <h3>RECORD YOUR NOTE</h3>
     <div class="recording__box">
       <VoiceRecogination />
     </div>
